@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:myapp/screens/outer_layer_screen/outer_layer_screen.dart';
 import 'package:myapp/utils/colors.dart';
 import 'package:myapp/widgets/our_shimmer_text.dart';
 import 'package:myapp/widgets/our_sized_box.dart';
@@ -13,6 +16,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  void completed() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const OuterLayerScreen(),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 3), completed);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
